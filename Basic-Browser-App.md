@@ -47,7 +47,7 @@ basic-browser-handler.js
 ```
 REQUIRES: nothing
 EXPORTS: nothing
-BEHAVIOR: verifies DOM input for validity (if not empty string) and casts as a Number. Sets the controller object with input numbers. REmpties the DOM input elements
+BEHAVIOR: defines handler object
 
 handler: Object
   PROPERTIES: 1
@@ -63,82 +63,98 @@ handler: Object
       Sets nmber input elements in the DOM to null
 ```
 
-
----stopped here (below is copy paste from Evan's example)
-
-controller.js
+basic-mvclh-controller.js
 ```
 REQUIRES: nothing
 EXPORTS: nothing
-BEHAVIOR: defines the controller object
+BEHAVIOR: a) defines the controller object
+b) sets exports in module object as the defined controller
 
 controller: Object
-  PROPERTIES: 2
+  PROPERTIES: 3
     view: Object
       INITIALIZED: empty
     model: Object
       INITIALIZED: empty
-  METHODS: 2
-    addText:
-      ARGS: 1
-        param1: String
-          PURPOSE: to be added to the model
-      RETURN: undefined
-      BEHAVIOR: calls this.model.addText() with 'param1' as argument
-  print:
-      ARGS: 0
-      RETURN: undefined
-      BEHAVIOR: calls this.view.display() with this.model.text
-
-```
-handler.js
-```
-REQUIRES: nothing
-EXPORTS: nothing
-BEHAVIOR: defines the handler object
-
-handler: Object
+    logic: Object
+      INITIALIZED: empty
   METHODS: 1
-    setup:
-      ARGS: 0
+    add:
+      ARGS: 2
+        arg1: Number
+          PURPOSE: to be passed to logic as input to calculate SUM
+	arg2: Number
+          PURPOSE: to be passed to logic as input to calculate SUM
       RETURN: undefined
-      BEHAVIOR: Sets the controller's 'view' and 'model' properties. 
-      	Attaches an event listener to the button under the text box.
+      BEHAVIOR: Retrieves last result from module. Calls logic passing the two input numbers and last result as arguments. Logs the result of the addition(logic) to the console. Calls model to (re)set last result. Calls view to display result.
+
 ```
-model.js
+
+basic-mvclh-model.js
 ```
 REQUIRES: nothing
 EXPORTS: nothing
-BEHAVIOR: defines the model object
+BEHAVIOR: a) defines the model object
+b) sets exports in module object as the defined model
 
 model: Object
   PROPERTIES: 1
-    text: String
-    INITALIZED: empty
-  METHODS: 1
-    addText: 
-      ARGS: 1
-        param1: String
-        PURPOSE: To be set as this.text
+    lastResult: Number
+    INITALIZED: 0
+  METHODS: 2
+    1)getLastResult: 
+      ARGS: none
       RETURNS: undefined
-      BEHAVIOR: Resets this.string to the parameter value
+      BEHAVIOR: Retrieves this.lastResult
+    2)setLastResult: 
+      	ARGS: 1
+        	param1: Number
+        PURPOSE: To be set as the new "last result" stored
+      	RETURNS: undefined
+     	BEHAVIOR: Resets this.lastResult to the parameter value
 ```
-view.js
+
+basic-mvclh-logic.js
 ```
 REQUIRES: nothing
 EXPORTS: nothing
-BEHAVIOR: defines the view object
+BEHAVIOR: a) defines the model object
+b) sets exports in module object as the defined model
+
+model: Object
+  PROPERTIES: 1
+    lastResult: Number
+    INITALIZED: 0
+  METHODS: 2
+    1)getLastResult: 
+      ARGS: none
+      RETURNS: undefined
+      BEHAVIOR: Retrieves this.lastResult
+    2)setLastResult: 
+      	ARGS: 1
+        	param1: Number
+        PURPOSE: To be set as the new "last result" stored
+      	RETURNS: undefined
+     	BEHAVIOR: Resets this.lastResult to the parameter value
+```
+
+basic-browser-view.js
+```
+REQUIRES: nothing
+EXPORTS: nothing
+BEHAVIOR: a) defines the view object
+b) sets exports in module object as the defined view
 
 view: Object
   PROPERTIES: 0
   METHODS: 1
     display: 
       ARGS: 1
-        text: String
+        result: Number
         PURPOSE: to be appended into the DOM
       RETURNS: undefined
-      BEHAVIOR: Takes in a string and concatenates it 
-      		into the innerHTML of the 'printline' div
+      BEHAVIOR: Takes in a number and concatenates it 
+      		into the innerHTML of the 'output' div
 ```
 
 

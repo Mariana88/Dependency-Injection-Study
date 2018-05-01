@@ -36,17 +36,34 @@ EXPORTS: nothing
 BEHAVIOR: none
 ```
 app.js
-
+```
 REQUIRES: nothing
 EXPORTS: nothing
 BEHAVIOR: a) sets controller, model, logic, and view
 b) listens to a click on the index.html "addButton" and calls handler upon that click
-
 ```
+
 basic-browser-handler.js
-
-
 ```
+REQUIRES: nothing
+EXPORTS: nothing
+BEHAVIOR: verifies DOM input for validity (if not empty string) and casts as a Number. Sets the controller object with input numbers. REmpties the DOM input elements
+
+handler: Object
+  PROPERTIES: 1
+   controller: object
+   	PROPERTIES:0
+	METHODS: 0
+  METHODS: 1
+    add:
+      ARGS: 0
+      RETURN: undefined
+      BEHAVIOR: Verifies input, if empty string stes as undefined, else casts it as Number.
+      Sets the controller's add method with input numbers as args. 
+      Sets nmber input elements in the DOM to null
+```
+
+
 ---stopped here (below is copy paste from Evan's example)
 
 controller.js

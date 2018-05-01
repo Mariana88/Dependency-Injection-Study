@@ -1,9 +1,19 @@
-# Dependency-Injection-Study
+# DOM-console-node Basic Browser App
 
-In this project we will analyse different applications and their components to understand how MVC and dependency injection work. Our job is to study the code and document the specifications and architectural diagram form them. The documentation for each different studied application should be placed in a different branch inside this repository (links to branches hereunder).
+## About this code
 
-# Linksto each app studied
+## [App files](https://github.com/elewa-academy/Modular-Design/tree/master/03-dependency-injection/1-app-components-architecture/1-dom-console-node/apps/basic-browser-app) 
 
-* []()
-* []()
-* []()
+## Install instructions
+
+## ASCII file structure
+
+1-dom-console-node/apps/basic-browser-app/
+|public
+  \+-- style.css
++-- app.js
++-- README.md
++-- index.html
+  * Entry point to the application
+
+## Notes

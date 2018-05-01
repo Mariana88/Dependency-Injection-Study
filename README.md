@@ -16,7 +16,7 @@
    \+--style.css  
   +-- app.js  
   +-- index.html  
-   * entry point to the application  
+   entry point to the application  
  \basic-terminal-app  
  \hybird-browser-app  
  +-- basic-node-app.js  

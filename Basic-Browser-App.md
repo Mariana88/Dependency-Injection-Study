@@ -59,7 +59,7 @@ handler: Object
       ARGS: 0
       RETURN: undefined
       BEHAVIOR: Verifies input, if empty string stes as undefined, else casts it as Number.
-      Sets the controller's add method with input numbers as args. 
+      Calls the controller's add method with input numbers as args. 
       Sets nmber input elements in the DOM to null
 ```
 

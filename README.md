@@ -10,24 +10,24 @@
 
 1-dom-console-node
 
-* |apps  
- * \basic-browser-app 
- * \public  
-  * \+--style.css  
- * +-- app.js  
- * +-- index.html  
-  * entry point to the application  
- * \basic-terminal-app  
- * \hybird-browser-app  
- * +-- basic-node-app.js  
- * +-- persistent-node-app.js 
-* |components  
-  * \controllers  
-   * +-- basic-mvclh-controller.js  
-  * \handlers  
-    * +-- basic-browser-handler.js  
-    * +-- basic-node-handler.js  
-    * +-- basic-trminal-handler.js  
+|apps  
+ \basic-browser-app 
+  \public  
+   \+--style.css  
+  +-- app.js  
+  +-- index.html  
+   * entry point to the application  
+ \basic-terminal-app  
+ \hybird-browser-app  
+ +-- basic-node-app.js  
+ +-- persistent-node-app.js 
+|components  
+  \controllers  
+   +-- basic-mvclh-controller.js  
+  \handlers  
+    +-- basic-browser-handler.js  
+    +-- basic-node-handler.js  
+    +-- basic-trminal-handler.js  
   \logics  
     +-- basic-mvclh-logic.js  
   \models  

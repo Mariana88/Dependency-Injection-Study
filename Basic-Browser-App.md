@@ -118,24 +118,19 @@ basic-mvclh-logic.js
 ```
 REQUIRES: nothing
 EXPORTS: nothing
-BEHAVIOR: a) defines the model object
+BEHAVIOR: a) defines the logic object
 b) sets exports in module object as the defined model
 
-model: Object
-  PROPERTIES: 1
-    lastResult: Number
-    INITALIZED: 0
-  METHODS: 2
-    1)getLastResult: 
-      ARGS: none
-      RETURNS: undefined
-      BEHAVIOR: Retrieves this.lastResult
-    2)setLastResult: 
-      	ARGS: 1
-        	param1: Number
-        PURPOSE: To be set as the new "last result" stored
-      	RETURNS: undefined
-     	BEHAVIOR: Resets this.lastResult to the parameter value
+logic: Object
+  PROPERTIES: 0
+  METHODS: 1
+    add: 
+      ARGS: 3
+      	1) number (a user input number)
+	2) number (a second user input number)
+	3) number (the last result stored from a previous operation)
+      RETURNS: number (the result of the addition operation performed)
+      BEHAVIOR: Considers the input provided and decides on which numbers to add: if two numbers provided as user input, adds 	them. If only 1 number provided as user input, adds this number to last result.
 ```
 
 basic-browser-view.js

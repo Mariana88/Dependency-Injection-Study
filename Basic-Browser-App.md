@@ -180,22 +180,51 @@ BEHAVIOR: defines handler object
 handler: Object
   PROPERTIES: 1
    controller: object
-   	  PROPERTIES: 3
-    view: Object
-      INITIALIZED: empty
-    model: Object
-      INITIALIZED: empty
-    logic: Object
-      INITIALIZED: empty
-  METHODS: 1
-    add:
-      ARGS: 2
-        arg1: Number
-          PURPOSE: to be passed to logic as input to calculate SUM
-	arg2: Number
-          PURPOSE: to be passed to logic as input to calculate SUM
-      RETURN: undefined
-      BEHAVIOR: Retrieves last result from module. Calls logic passing the two input numbers and last result as arguments. Logs the result of the addition(logic) to the console. Calls model to (re)set last result. Calls view to display result.
+   	PROPERTIES: 3
+		view: Object
+  			PROPERTIES: 0
+ 			METHODS: 1
+    				display: 
+      					ARGS: 1
+        					result: Number
+        					PURPOSE: to be appended into the DOM
+      					RETURNS: undefined
+     					BEHAVIOR: Takes in a number and concatenates it into the innerHTML of the 'output' div
+    		model: Object
+  			PROPERTIES: 1
+    				lastResult: Number
+    				INITALIZED: 0
+  			METHODS: 2
+    				1)getLastResult: 
+      					ARGS: none
+      					RETURNS: undefined
+     					BEHAVIOR: Retrieves this.lastResult
+    				2)setLastResult: 
+      					ARGS: 1
+        					param1: Number
+        					PURPOSE: To be set as the new "last result" stored
+      					RETURNS: undefined
+     					BEHAVIOR: Resets this.lastResult to the parameter value
+		logic: Object
+  			PROPERTIES: 0
+  			METHODS: 1
+    				add: 
+      					ARGS: 3
+      						1) number (a user input number)
+						2) number (a second user input number)
+						3) number (the last result stored from a previous operation)
+      					RETURNS: number (the result of the addition operation performed)
+      					BEHAVIOR: Considers the input provided and decides on which numbers to add: if two numbers provided as user input, adds them. If only 1 number provided as user input, adds this number to last result.  
+				
+    	METHODS: 1
+    		add:
+      			ARGS: 2
+        			arg1: Number
+          			PURPOSE: to be passed to logic as input to calculate SUM
+				arg2: Number
+          			PURPOSE: to be passed to logic as input to calculate SUM
+     			RETURN: undefined
+      			BEHAVIOR: Retrieves last result from module. Calls logic passing the two input numbers and last result as arguments. Logs the result of the addition(logic) to the console. Calls model to (re)set last result. Calls view to display result.
 
   METHODS: 1
     add:
@@ -204,63 +233,6 @@ handler: Object
       BEHAVIOR: Gets input elements from the DOM. Verifies input, if empty string stes as undefined, else casts it as Number.
       Calls the controller's add method with input numbers as args. 
       Sets nmber input elements in the DOM to null
-```
-
-basic-mvclh-controller.js
-```
-REQUIRES: nothing
-EXPORTS: nothing
-BEHAVIOR: a) defines the controller object
-b) sets exports in module object as the defined controller
-
-controller: Object
-  PROPERTIES: 3
-	view: Object
-  		PROPERTIES: 0
- 		 METHODS: 1
-    			display: 
-      				ARGS: 1
-        			result: Number
-        			PURPOSE: to be appended into the DOM
-      				RETURNS: undefined
-     				BEHAVIOR: Takes in a number and concatenates it into the innerHTML of the 'output' div
-    	model: Object
-  		PROPERTIES: 1
-    			lastResult: Number
-    			INITALIZED: 0
-  		METHODS: 2
-    			1)getLastResult: 
-      				ARGS: none
-      				RETURNS: undefined
-     				BEHAVIOR: Retrieves this.lastResult
-    			2)setLastResult: 
-      				ARGS: 1
-        				param1: Number
-        			PURPOSE: To be set as the new "last result" stored
-      				RETURNS: undefined
-     				BEHAVIOR: Resets this.lastResult to the parameter value
-	logic: Object
-  		PROPERTIES: 0
-  		METHODS: 1
-    			add: 
-      				ARGS: 3
-      					1) number (a user input number)
-					2) number (a second user input number)
-					3) number (the last result stored from a previous operation)
-      				RETURNS: number (the result of the addition operation performed)
-      				BEHAVIOR: Considers the input provided and decides on which numbers to add: if two numbers provided as user input, adds them. If only 1 number provided as user input, adds this number to last result.
-				
-				
-  METHODS: 1
-    add:
-      ARGS: 2
-        arg1: Number
-          PURPOSE: to be passed to logic as input to calculate SUM
-	arg2: Number
-          PURPOSE: to be passed to logic as input to calculate SUM
-      RETURN: undefined
-      BEHAVIOR: Retrieves last result from module. Calls logic passing the two input numbers and last result as arguments. Logs the result of the addition(logic) to the console. Calls model to (re)set last result. Calls view to display result.
-
 ```
 
 [TOP](#index)
